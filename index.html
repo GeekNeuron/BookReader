@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کتابخوان</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div id="app-container">
+
+        <header id="app-header">
+            <div class="header-left">
+                <div class="search-container">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="search" id="search-input" placeholder="جستجوی کتاب، نویسنده، متن...">
+                </div>
+            </div>
+            <div class="header-center">
+                <h1>کتابخوان</h1>
+                <img src="assets/icons/logo.png" alt="logo" class="header-logo">
+            </div>
+        </header>
+
+        <div id="category-tabs"></div>
+
+        <main id="main-content">
+            <section id="home-section" class="page-section active">
+                <div id="book-list"></div>
+            </section>
+
+            <section id="search-section" class="page-section">
+                <h2>نتایج جستجو</h2>
+                <div id="search-results"></div>
+            </section>
+            
+            <section id="categories-section" class="page-section">
+                 <h2>دسته‌بندی‌ها</h2>
+                 <div id="category-list-mobile"></div>
+            </section>
+
+            <section id="clippings-section" class="page-section">
+                <h2>بریده‌ها</h2>
+                <div id="clippings-list"></div>
+            </section>
+
+            <section id="settings-section" class="page-section">
+                <h2>تنظیمات</h2>
+                <div class="settings-container">
+                    </div>
+            </section>
+        </main>
+
+        <div id="reader-view">
+            <div id="viewer"></div>
+            <div id="reader-progress-bar"></div>
+            <a id="prev" class="arrow">&lsaquo;</a>
+            <a id="next" class="arrow">&rsaquo;</a>
+        </div>
+
+
+        <footer id="app-footer">
+            <nav>
+                <button data-target="search-section">
+                    <span class="material-symbols-outlined">search</span>
+                    <small>جستجو</small>
+                </button>
+                <button data-target="categories-section">
+                    <span class="material-symbols-outlined">category</span>
+                    <small>دسته‌بندی</small>
+                </button>
+                <button data-target="home-section" class="active">
+                    <span class="material-symbols-outlined">home</span>
+                    <small>خانه</small>
+                </button>
+                <button data-target="clippings-section">
+                    <span class="material-symbols-outlined">bookmark</span>
+                    <small>بریده‌ها</small>
+                </button>
+                <button data-target="settings-section">
+                    <span class="material-symbols-outlined">settings</span>
+                    <small>تنظیمات</small>
+                </button>
+            </nav>
+        </footer>
+
+    </div>
+
+    <script src="js/books.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
