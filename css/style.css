@@ -1,0 +1,407 @@
+/* Import Saber Rastikerdar Fonts */
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/Sahel-font-face.css');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/shabnam-font@v5.0.1/Shabnam-font-face.css');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/tanha-font@v1.0.2/Tanha-font-face.css');
+
+/* --- Root Variables & Base Styles --- */
+:root {
+    --primary-bg: #f0f2f5;
+    --secondary-bg: #ffffff;
+    --primary-text: #1c1e21;
+    --secondary-text: #606770;
+    --accent-color: #0d6efd;
+    --border-color: #dcdfe3;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --progress-bar-bg: #e9ecef;
+    --border-radius: 16px;
+    --font-family: 'Vazirmatn', 'Sahel', 'Shabnam', 'Tanha', sans-serif;
+    --font-size: 16px;
+}
+
+[data-theme="dark"] {
+    --primary-bg: #18191a;
+    --secondary-bg: #242526;
+    --primary-text: #e4e6eb;
+    --secondary-text: #b0b3b8;
+    --accent-color: #2e89ff;
+    --border-color: #3e4042;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Add other themes here */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* Disable blue highlight on click */
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 80px; /* Space for footer */
+}
+
+/* --- Header --- */
+#app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    width: 32px;
+    height: 32px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--primary-bg);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+}
+
+.search-container input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: var(--primary-text);
+    width: 250px;
+    font-family: var(--font-family);
+}
+.search-container .material-symbols-outlined {
+    color: var(--secondary-text);
+}
+
+/* --- Category Tabs --- */
+#category-tabs {
+    display: flex;
+    gap: 10px;
+    padding: 1rem 1.5rem;
+    overflow-x: auto;
+    background-color: var(--secondary-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+#category-tabs::-webkit-scrollbar { display: none; } /* Hide scrollbar */
+#category-tabs button {
+    padding: 8px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: transparent;
+    color: var(--secondary-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+#category-tabs button.active, #category-tabs button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* --- Main Content & Sections --- */
+main {
+    padding: 1.5rem;
+}
+
+.page-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+.page-section.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Book List Item --- */
+.book-item {
+    display: flex;
+    gap: 20px;
+    background-color: var(--secondary-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-color);
+}
+.book-cover img {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.book-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.book-info h3 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-text);
+}
+.book-info .meta {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    margin: 5px 0 15px 0;
+}
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: var(--progress-bar-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    transition: width 0.5s ease;
+}
+.progress-bar-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.7rem;
+    color: var(--primary-text);
+    font-weight: bold;
+}
+.book-expand {
+    align-self: flex-start;
+    color: var(--secondary-text);
+    cursor: pointer;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+.book-expand.expanded {
+    transform: rotate(90deg);
+}
+.book-description {
+    display: none;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--secondary-text);
+    grid-column: 1 / -1; /* Span full width in grid */
+}
+.book-description.visible {
+    display: block;
+}
+
+
+/* --- Footer --- */
+#app-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--secondary-bg);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    z-index: 100;
+}
+#app-footer nav {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+#app-footer button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 12px;
+    background: none;
+    border: none;
+    color: var(--secondary-text);
+    cursor: pointer;
+    flex-grow: 1;
+    transition: color 0.3s;
+}
+#app-footer button.active, #app-footer button:hover {
+    color: var(--accent-color);
+}
+#app-footer button small {
+    font-size: 0.7rem;
+    font-family: var(--font-family);
+}
+
+
+/* --- EPUB Reader View --- */
+#reader-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--secondary-bg);
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+}
+#reader-view.open {
+    transform: translateX(0);
+}
+
+#viewer {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+#viewer .epub-view > iframe {
+    /* Dotted border for pages */
+    border: 2px dotted var(--border-color) !important;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+}
+
+#reader-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background-color: var(--accent-color);
+    transition: width 0.2s linear;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    margin-top: -32px;
+    font-size: 64px;
+    color: var(--secondary-text);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+    padding: 0 20px;
+}
+.arrow:hover {
+    color: var(--accent-color);
+}
+#prev { left: 0; }
+#next { right: 0; }
+
+
+/* --- Search Results --- */
+.search-result-item {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.search-result-item .context {
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 10px;
+}
+
+.search-result-item .context mark {
+    background-color: yellow;
+    color: black;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+
+/* --- Clippings Section --- */
+.clipping-item {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    position: relative;
+}
+.clipping-item .meta {
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    margin-bottom: 0.5rem;
+}
+.clipping-item .actions {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 15px;
+}
+.clipping-item .actions .material-symbols-outlined {
+    cursor: pointer;
+    color: var(--secondary-text);
+    transition: color 0.2s;
+}
+.clipping-item .actions .material-symbols-outlined:hover {
+    color: var(--accent-color);
+}
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    #app-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .search-container input {
+        width: 100%;
+    }
+    .book-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .book-info {
+        align-items: center;
+    }
+    .book-expand {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    }
+    main {
+        padding: 1rem;
+    }
+    #viewer {
+        padding: 1rem;
+    }
+    .arrow { display: none; }
+}
