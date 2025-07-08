@@ -10,40 +10,38 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
 </head>
 <body>
 
     <div id="app-container">
 
         <header id="app-header">
-          <div class="header-right">
-            </div>
-            <div class="header-center">
-                <img src="assets/icons/logo.png" alt="logo" class="header-logo">
-                <h1>کتابخوان</h1>
-            </div>
+            <div class="header-left">
                 <div class="search-container">
                     <span class="material-symbols-outlined">search</span>
                     <input type="search" id="search-input" placeholder="جستجوی کتاب، نویسنده، متن...">
                 </div>
+            </div>
+            <div class="header-center">
+                <h1>کتابخوان</h1>
+                <img src="assets/icons/logo.png" alt="logo" class="header-logo">
+            </div>
         </header>
-
-        <div id="category-tabs"></div>
+        <h2 id="app-subtitle">کتابخانه شخصی شما</h2>
 
         <main id="main-content">
             <section id="home-section" class="page-section active">
                 <div id="book-list"></div>
             </section>
 
-            <section id="search-section" class="page-section">
-                <h2>نتایج جستجو</h2>
-                <div id="search-results"></div>
-            </section>
-            
             <section id="categories-section" class="page-section">
                  <h2>دسته‌بندی‌ها</h2>
-                 <div id="category-list-mobile"></div>
+                 <div id="category-grid"></div>
+            </section>
+
+            <section id="favorites-section" class="page-section">
+                <h2>علاقه‌مندی‌ها</h2>
+                <div id="favorites-list"></div>
             </section>
 
             <section id="clippings-section" class="page-section">
@@ -61,17 +59,10 @@
         <div id="reader-view">
             <div id="viewer"></div>
             <div id="reader-progress-bar"></div>
-            <a id="prev" class="arrow">&lsaquo;</a>
-            <a id="next" class="arrow">&rsaquo;</a>
-        </div>
-
+            </div>
 
         <footer id="app-footer">
             <nav>
-                <button data-target="search-section">
-                    <span class="material-symbols-outlined">search</span>
-                    <small>جستجو</small>
-                </button>
                 <button data-target="categories-section">
                     <span class="material-symbols-outlined">category</span>
                     <small>دسته‌بندی</small>
@@ -79,6 +70,10 @@
                 <button data-target="home-section" class="active">
                     <span class="material-symbols-outlined">home</span>
                     <small>خانه</small>
+                </button>
+                <button data-target="favorites-section">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <small>علاقه‌ها</small>
                 </button>
                 <button data-target="clippings-section">
                     <span class="material-symbols-outlined">bookmark</span>
@@ -90,7 +85,6 @@
                 </button>
             </nav>
         </footer>
-
     </div>
 
     <script src="js/books.js"></script>
